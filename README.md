@@ -9,11 +9,11 @@ No build step, no dependencies, no server. It is one `index.html` plus a few sma
 ## What it does
 
 - **Nodes** with types, colours, groups, a badge, and per-node appearance (background and text colour, alignment, bold / italic / underline).
-- **Notes** (floating text) and **images** (drop, paste or add; crop, resize, rotate, give them a name).
+- **Notes** (floating text) and **images** (drop, paste or add; crop, resize, rotate, name them, and give them a border with its own thickness, colour and line type).
 - **Wires** that are curved or straight, with labels, custom colours, pins to reshape them, and an in / out port on every side of a node.
 - **Selection tools** for nodes, notes, images, wires and groups, plus a *Filter selection* button for dropping items from a selection.
 - **Bulk create** (one node per line), **find & replace** across node names, properties and notes, undo / redo.
-- **PNG export** with four layouts (whole graph, selection only, selection highlighted in its group, selection highlighted in the whole graph), an optional legend and a transparent background.
+- **PNG export** with four layouts (whole graph, selection only, selection highlighted in its group, selection highlighted in the whole graph), an optional legend and a transparent background. Save the file or copy the image to the clipboard.
 - **Projects** stored in your browser, with JSON import / export.
 - **GitHub sync**, per project (see below).
 
@@ -43,17 +43,18 @@ Everyone who collaborates needs write access to the repository and their own tok
 
 **Using it**
 
-- Turn on the **GitHub** switch at the end of a project's row. Off keeps the project local only.
-- A synced project is saved as `federation-graph/<id>.json`, and its images under `federation-graph/img/`. Every save is a commit.
-- Changes save a few seconds after you stop editing. The app checks for other people's changes about every 25 seconds and loads them quietly when you have nothing unsaved.
-- **Sync now** and **Reload latest** are on each synced row. **Load from GitHub** adds projects that exist in the repository but not in your list yet.
+- Turn on the **GitHub** switch at the end of a project's row. Off keeps the project local only. Nothing is uploaded or loaded by itself.
+- Press **Save to GitHub** on the row to upload the project. It is saved as `federation-graph/<id>.json`, with its images under `federation-graph/img/`, as one commit.
+- Press **Reload latest** to load the newest version from GitHub. The row and the project button show **⬇** when a newer version exists. The app only checks when you open the page or come back to the tab.
+- **Load from GitHub** adds projects that exist in the repository but not in your list yet.
 - If you both changed the same project, you choose: **Load theirs**, **Keep mine**, or **Save mine as a copy**.
+- Want it automatic? Tick **Settings → Auto-sync GitHub projects**. Changes then upload a few seconds after you stop editing, and other people's changes load by themselves. It is off by default.
 
 **Good to know**
 
 - GitHub Pages on a free account needs a public repository, so synced projects can be read by anyone. Don't sync anything private.
-- If Pages publishes from `main`, each save rebuilds the site. To avoid that, create a separate branch (for example `data`) and enter it in the **Branch** field when connecting.
-- Updates arrive within about half a minute. There is no live cursor or instant co-editing.
+- If Pages publishes from `main`, each save to GitHub rebuilds the site. To avoid that, create a separate branch (for example `data`) and enter it in the **Branch** field when connecting.
+- This is not live co-editing. Other people see your changes after you save and they reload (or within about half a minute with auto-sync on).
 - Deleting a synced project only removes your local copy. The file on GitHub stays, and **Load from GitHub** brings it back.
 
 ## Your data
